@@ -1,0 +1,105 @@
+#include<stdio.h>
+#include<string.h>
+#define true 1
+#define false 0
+int s();
+int l();
+int l1();
+
+char *p1,*p2,*p3,*p4,a[100];
+
+int s()
+{
+	p2=p1;
+	
+	if( *p1=='(' )
+	{
+		
+		p1++;
+		
+
+		if( l() )
+		{
+			if( *p1==')' )
+			{
+				p1++;	
+				return true;
+			}
+		
+		}
+		
+	}
+
+	p1=p2;
+	if( *p1=='a' )
+	{
+		p1++;
+		return true;
+	}
+	else 
+		return false;
+}
+
+
+int l()
+{
+ 	p3=p1;
+	
+	if( s() )
+	{
+
+		if( l1() )
+		{
+			p1++;
+			return true;
+		}
+
+	}
+	else 
+		return false;
+}	
+
+int l1()
+{
+	p4=p1;
+	if( *p1==',')
+	{
+		p1++;
+		if( s() )
+		{
+			if( l1() )
+			{
+				p1++;
+				return true;
+			}
+		
+
+		}
+		else
+			return false;
+	}
+	p1=p4;
+	if( *p1==' ')
+	{
+		p1++;
+		return true;
+	}
+	return false;
+}
+
+int main(){	
+	int len;
+	char* x;
+	printf("enter input string\n");
+	scanf("%s",a);
+	x=p1=a;
+
+	printf("%d\n",len);
+	if(s() && x==p1-len-1 )
+	printf("string accepted\n");
+	else
+	printf("invalid string\n");
+	return 0;
+}
+
+	

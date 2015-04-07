@@ -1,0 +1,29 @@
+%{
+#include<stdio.h>
+%}
+LETTER[A-Z a-z]
+DIGIT[0-9]
+begin {
+printf("recognized keyword: %s\n",yytext);	
+}
+break {
+printf("recognized keyword: %s\n",yytext);
+}
+if {
+printf("recognized keyword: %s\n",yytext);
+}
+else {
+printf("recognized keyword: %s\n",yytext);
+}
+switch {
+printf("recognized keyword: %s\n",yytext);
+}
+{LETTER}({LETTER}|{DIGIT})* {
+printf("recognized id: %s\n",yytext);
+}
+%%
+main()
+{
+yylex();
+}
+%%

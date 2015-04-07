@@ -1,0 +1,40 @@
+%{
+#include<stdio.h>
+%}
+DIGIT[0-9]
+LETTER[a-zA-Z]
+DOT[.]
+%%
+{LETTER}({LETTER}|{DIGIT})* {
+printf("recognized id : %s",yytext);
+}
+{DIGIT}({DIGIT})*{DOT}({DIGIT})* {
+printf("recognized FLOATING NUMBER: %s",yytext);
+}
+{DIGIT}({DIGIT})* {
+printf("recognized NUMBER: %s",yytext);
+}
+"<=" {
+printf("recognized lessthan or equal to : %s",yytext);
+}
+"<" {
+printf("recognized lessthan : %s",yytext);
+}
+">=" {
+printf("recognized greaterthan or equal to : %s",yytext);
+}
+">" {
+printf("recognized greaterthan : %s",yytext);
+}
+"=" {
+printf("recognized equal : %s",yytext);
+}
+"<>" {
+printf("recognized lessthan greaterthan: %s",yytext);
+}
+%%
+main()
+{
+yylex();
+}
+
